@@ -1,0 +1,28 @@
+<html>
+<head>
+<title>Results for {{ group }}</title>
+	<script type="text/javascript" src="http://www.chartjs.org/assets/Chart.js"></script>
+</head>
+<body>
+<h1>Group: {{ group }}</h1>
+<canvas id="myChart" width="400" height="700"></canvas>
+<script>
+
+var data = {
+    labels: {{labels|safe}},
+    datasets: [
+        {
+            label: "2. Ebaluaketa",
+            fillColor: "rgba(220,220,220,0.5)",
+            strokeColor: "rgba(220,220,220,0.8)",
+            highlightFill: "rgba(220,220,220,0.75)",
+            highlightStroke: "rgba(220,220,220,1)",
+            data: {{ data }}
+        }
+    ]
+};
+var ctx = document.getElementById("myChart").getContext("2d");
+var myNewChart = new Chart(ctx).Bar(data);
+</script>
+</body>
+</html>
